@@ -1,9 +1,10 @@
 NAME = push_swap
 
-SRCS = main.c checker.c push_swap_utils.c free.c
+SRCS = main.c checker.c push_swap_utils.c free.c \
+		push.c rotate.c reverse_rotate.c swap.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
-# CFLAGS = -Wall -Wextra -Werror $(CFLAGS)
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
@@ -11,10 +12,6 @@ $(NAME): $(OBJS)
 	@echo "\033[0;34m"
 	@make -C ./libft bonus
 	@$(CC) $(OBJS) -Llibft -lft -o $(NAME)
-	@echo "\033[33m┏┓   ┓"
-	@echo "┗┓┏┓ ┃┏┓┏┓┏┓"
-	@echo "┗┛┗┛━┗┗┛┛┗┗┫"
-	@echo "           ┛\033[0m"
 
 clean:
 	@echo "\033[0;34m"
