@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:30:54 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/11 15:31:15 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/13 22:35:08 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,22 @@ int	main(int ac, char **argv)
 	argv = arg.argv;
 	ft_value_check(argv);
 	ft_stack_filling(&stack_a,argv);
-	ft_reverse_rotate_a(&stack_a);
-	ft_rotate_a(&stack_a);
-	// ft_swap(&stack_a);
-	ft_push_b(&stack_a,&stack_b);
-	// ft_push(&stack_b,&stack_a);
-	ft_push_b(&stack_a,&stack_b);
-	ft_swap_a(&stack_a);
-	ft_swap_b(&stack_b);
+	ft_indexing(&stack_a);
+	// if(ft_check_stack_sorted(&stack_a))
+	// {
+	// 	if(ft_stack_size(&stack_a) == 2)
+	// 		ft_swap_a(&stack_a);
+	// 	else if(ft_stack_size(&stack_a) == 3)
+	// 		ft_three_node_sort(&stack_a);
+	// }
+	// ft_reverse_rotate_a(&stack_a);
+	// ft_rotate_a(&stack_a);
+	// // ft_swap(&stack_a);
+	// ft_push_b(&stack_a,&stack_b);
+	// // ft_push(&stack_b,&stack_a);
+	// ft_push_b(&stack_a,&stack_b);
+	// ft_swap_a(&stack_a);
+	// ft_swap_b(&stack_b);
 	while(stack_a!=NULL)
 	{
 		printf("%d\n",stack_a->data);

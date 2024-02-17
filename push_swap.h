@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:31:07 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/11 15:20:16 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/13 15:53:56 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ typedef struct s_data
 typedef struct s_stack
 {
 	int				data;
+	int				above_median;
+	int				index;
+	int				cheapset;
+	struct s_stack	*target;
 	struct s_stack	*next;
 } t_stack;
 
@@ -44,6 +48,16 @@ void	ft_rotate_rr(t_stack **stack_a, t_stack **stack_b);
 void	ft_reverse_rotate_a(t_stack **stack_a);
 void	ft_reverse_rotate_b(t_stack **stack_b);
 void	ft_reverse_rotate_rr(t_stack **stack_a, t_stack **stack_b);
+
+int		ft_stack_size(t_stack **stack);
+t_stack	*ft_last_node(t_stack **stack);
+t_stack	*ft_max_node(t_stack **stack);
+t_stack	*ft_min_node(t_stack **stack);
+
+int		ft_check_stack_sorted(t_stack **stack);
+void	ft_three_node_sort(t_stack **stack_a);
+
+void	ft_indexing(t_stack **stack);
 
 void	ft_limit_check(char **argv);
 void	ft_error(char *s);
