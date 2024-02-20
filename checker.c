@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:22:27 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/11 14:49:06 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/18 15:15:22 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_limit_check(char **argv)
 }
 void	ft_arg_check(t_data *arg, char **argv)
 {
+	
 	if(ft_strchr(argv[1],' ') != 0)
 			arg->argv = ft_split(argv[1],' ');
 	else

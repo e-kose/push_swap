@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:31:07 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/13 15:53:56 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/19 16:42:52 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,14 @@ t_stack	*ft_max_node(t_stack **stack);
 t_stack	*ft_min_node(t_stack **stack);
 
 int		ft_check_stack_sorted(t_stack **stack);
-void	ft_three_node_sort(t_stack **stack_a);
+void	ft_three_node_sort_a(t_stack **stack_a);
+void	ft_three_node_sort_b(t_stack **stack_b);
+int		ft_sum(t_stack **stack);
 
 void	ft_indexing(t_stack **stack);
+void	ft_sort_first(t_stack **stack_a, t_stack **stack_b);
+void	ft_sort_second(t_stack **stack_a, t_stack **stack_b);
+void	ft_sort(t_stack **stack_a, t_stack **stack_b);
 
 void	ft_limit_check(char **argv);
 void	ft_error(char *s);
@@ -67,4 +72,7 @@ void	ft_free(t_stack **stack_a, char *s);
 void	ft_value_check(char **argv);
 void	ft_stack_filling(t_stack **stack_a, char **argv);
 void	ft_difference_check(t_stack **stack_a);
+
+int		ft_cp_stack(t_stack **stack);
+
 #endif
