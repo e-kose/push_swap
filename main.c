@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:30:54 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/20 12:37:07 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/23 15:13:16 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,10 @@ int	main(int ac, char **argv)
 		else
 			ft_sort(&stack_a, &stack_b);
 	}
-	// // ft_reverse_rotate_a(&stack_a);
-	// ft_rotate_a(&stack_a);
-	// ft_swap_a(&stack_a);
-	// ft_push_b(&stack_a,&stack_b);
-	// // ft_push(&stack_b,&stack_a);
-	// ft_push_b(&stack_a,&stack_b);
-	// ft_swap_a(&stack_a);
-	// ft_swap_b(&stack_b);
-	while(stack_a!=NULL)
-	{
-		printf("%d\n",stack_a->data);
-		stack_a=stack_a->next;
-	}
-	// printf("--------------\n");
-	// while (stack_b != NULL)
+	// while(stack_a!=NULL)
 	// {
-	// 	printf("%d\n",stack_b->data);
-	// 	stack_b=stack_b->next;
+	// 	printf("%d\n",stack_a->data);
+	// 	stack_a=stack_a->next;
 	// }
-
-	// printf("%ld\n",stack_a.data);
+	return (0);
 }

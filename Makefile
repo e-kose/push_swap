@@ -2,7 +2,7 @@ NAME = push_swap
 
 SRCS = main.c checker.c push_swap_utils.c free.c \
 		push.c rotate.c reverse_rotate.c swap.c \
-		sort.c push_swap_utils2.c
+		sort.c push_swap_utils2.c sort_utils.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

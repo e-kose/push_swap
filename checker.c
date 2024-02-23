@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:22:27 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/18 15:15:22 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/21 22:39:05 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_limit_check(char **argv)
 }
 void	ft_arg_check(t_data *arg, char **argv)
 {
-	
+
 	if(ft_strchr(argv[1],' ') != 0)
 			arg->argv = ft_split(argv[1],' ');
 	else
@@ -75,4 +75,22 @@ void	ft_difference_check(t_stack **stack_a)
 		}
 		root = root->next;
 	}
+}
+int	ft_check_stack_sorted(t_stack **stack)
+{
+	t_stack	*tmp;
+	int		check;
+	if (stack == NULL)
+		return (0);
+	tmp = *stack;
+	check = 0;
+	while (tmp->next != NULL)
+	{
+		if (tmp->data < tmp->next->data)
+			check++;
+		tmp = tmp->next;
+	}
+	if (check == ft_stack_size(stack) - 1)
+		return (0);
+	return (1);
 }

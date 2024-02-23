@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:18:53 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/19 16:43:12 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/21 21:58:48 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,14 @@ int	ft_cp_stack(t_stack **stack)
 		mid = arr[size / 2];
 	free(arr);
 	return	(mid);
+}
+t_stack	*ft_find_end(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	tmp = *stack;
+
+	while(tmp->next != NULL)
+		tmp = tmp->next;
+	return (tmp);
 }

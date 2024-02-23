@@ -6,55 +6,35 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:56:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/20 12:38:32 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/23 18:37:27 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_stack_sorted(t_stack **stack)
+static void ft_sort_iter(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*tmp;
-	int		check;
-	if (stack == NULL)
-		return (0);
-	tmp = *stack;
-	check = 0;
-	while (tmp->next != NULL)
+	int		rotate;
+	t_stack	*end;
+
+	rotate = 0;
+	while((*stack_b)->data > (*stack_a)->data)
 	{
-		if (tmp->data < tmp->next->data)
-			check++;
-		tmp = tmp->next;
-	}
-	if (check == ft_stack_size(stack) - 1)
-		return (0);
-	return (1);
-}
-
-void	ft_three_node_sort_a(t_stack **stack_a)
-{
-	t_stack *max;
-
-	max = ft_max_node(stack_a);
-	if (max == *stack_a)
 		ft_rotate_a(stack_a);
-	else if ((*stack_a)->next == max)
+		rotate++;
+	}
+	ft_push_a(stack_b, stack_a);
+	while(rotate > 0)
+	{
+		end = ft_find_end(stack_a);
+		if(end->data < (*stack_b)->data && (*stack_a)->data > (*stack_b)->data)
+		{
+			ft_push_a(stack_b,stack_a);
+			continue ;
+		}
 		ft_reverse_rotate_a(stack_a);
-	if ((*stack_a)->data > (*stack_a)->next->data)
-		ft_swap_a(stack_a);
-}
-
-void	ft_three_node_sort_b(t_stack **stack_b)
-{
-	t_stack *min;
-
-	min = ft_min_node(stack_b);
-	if (min == *stack_b)
-		ft_rotate_b(stack_b);
-	else if ((*stack_b)->next == min)
-		ft_reverse_rotate_b(stack_b);
-	if ((*stack_b)->data < (*stack_b)->next->data)
-		ft_swap_b(stack_b);
+		rotate--;
+	}
 }
 
 void	ft_sort_first(t_stack **stack_a, t_stack **stack_b)
@@ -84,13 +64,11 @@ void	ft_sort_first(t_stack **stack_a, t_stack **stack_b)
 
 void	ft_sort_second(t_stack **stack_a, t_stack **stack_b)
 {
-	int	mid;
-	int	i;
-	int	size;
-	int rotate;
+	int		mid;
+	int		i;
+	int		size;
 
 	i = 0;
-	rotate = 0;
 	size = ft_stack_size(stack_b);
 	mid = ft_cp_stack(stack_b);
 	if(size == 3)
@@ -101,30 +79,11 @@ void	ft_sort_second(t_stack **stack_a, t_stack **stack_b)
 	while(i < size && ft_stack_size(stack_b) > 3)
 	{
 		if((*stack_b)->data >= mid)
-		{
-			// if((*stack_b)->data > (*stack_a)->data )
-			// 	ft_push_a(stack_b, stack_a);
-			// else
-			// 	ft_rotate_rr(stack_a,stack_b);
-			while((*stack_b)->data > (*stack_a)->data)
-			{
-				ft_rotate_a(stack_a);
-				rotate++;
-			}
-			ft_push_a(stack_b, stack_a);
-			while(rotate > 0)
-			{
-				ft_reverse_rotate_a(stack_a);
-				rotate--;
-			}
-		}
+			ft_sort_iter(stack_a, stack_b);
 		else
 			ft_rotate_b(stack_b);
 		i++;
-		rotate = 0;
 	}
-	// if(ft_stack_size(stack_b) == 3)
-	// 	ft_three_node_sort_b(stack_b);
 	ft_sort_second(stack_a, stack_b);
 }
 

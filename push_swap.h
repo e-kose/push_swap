@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:31:07 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/19 16:42:52 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/21 22:05:11 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,7 @@ void	ft_stack_filling(t_stack **stack_a, char **argv);
 void	ft_difference_check(t_stack **stack_a);
 
 int		ft_cp_stack(t_stack **stack);
+
+t_stack	*ft_find_end(t_stack **stack);
 
 #endif
