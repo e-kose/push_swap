@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:45:05 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/13 13:13:15 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/25 12:46:29 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 void	ft_stack_filling(t_stack **stack_a, char **argv)
 {
 	t_stack	*top;
+	int		i;
 
 	ft_limit_check(argv);
 	top = NULL;
-	int	i;
+
 	i = -1;
 	while (argv[++i])
 	{
@@ -31,13 +32,13 @@ void	ft_stack_filling(t_stack **stack_a, char **argv)
 		}
 		else
 		{
-			*stack_a = malloc(sizeof(t_stack));
+			(*stack_a)->next = malloc(sizeof(t_stack));
+			(*stack_a)= (*stack_a)->next;
 			(*stack_a)->data = (int)ft_atoi(argv[i]);
-			(*stack_a)->next = top;
-			top = *stack_a;
+			(*stack_a)->next = NULL;
 		}
-
 	}
+		*stack_a = top;
 	ft_difference_check(stack_a);
 }
 

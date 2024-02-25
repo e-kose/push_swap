@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:59:45 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/22 21:39:34 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/25 14:21:31 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ static void	ft_swap(t_stack **stack)
 void	ft_swap_a(t_stack **stack_a)
 {
 	ft_swap(stack_a);
-	write(1, "sa\n", 4);
+	write(1, "sa\n", 3);
 }
 
 void	ft_swap_b(t_stack **stack_b)
 {
 	ft_swap(stack_b);
-	write(1, "sb\n", 4);
+	write(1, "sb\n", 3);
 }
 
 void	ft_swap_ss(t_stack **stack_a,t_stack **stack_b)
 {
 	ft_swap(stack_a);
 	ft_swap(stack_b);
-	write(1, "ss\n", 4);
+	write(1, "ss\n", 3);
 }

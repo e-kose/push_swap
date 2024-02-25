@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:31:07 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/21 22:05:11 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/25 13:30:55 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ typedef struct s_data
 typedef struct s_stack
 {
 	int				data;
-	int				above_median;
-	int				index;
-	int				cheapset;
-	struct s_stack	*target;
 	struct s_stack	*next;
 } t_stack;
 
@@ -59,7 +55,6 @@ void	ft_three_node_sort_a(t_stack **stack_a);
 void	ft_three_node_sort_b(t_stack **stack_b);
 int		ft_sum(t_stack **stack);
 
-void	ft_indexing(t_stack **stack);
 void	ft_sort_first(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_second(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort(t_stack **stack_a, t_stack **stack_b);

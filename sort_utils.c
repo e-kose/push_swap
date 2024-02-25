@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_utils.c                                    :+:      :+:    :+:   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:37:56 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/21 22:39:40 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/25 13:10:58 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_three_node_sort_a(t_stack **stack_a)
 {
-	t_stack *max;
+	t_stack	*max;
 
 	max = ft_max_node(stack_a);
 	if (max == *stack_a)
@@ -27,7 +27,7 @@ void	ft_three_node_sort_a(t_stack **stack_a)
 
 void	ft_three_node_sort_b(t_stack **stack_b)
 {
-	t_stack *min;
+	t_stack	*min;
 
 	min = ft_min_node(stack_b);
 	if (min == *stack_b)

@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:18:53 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/21 21:58:48 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/25 17:52:01 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void bubbleSort(int array[], int size) {
 
   // loop to access each array element
   for (int step = 0; step < size - 1; ++step) {
-
-    // check if swapping occurs
     int swapped = 0;
 
     // loop to compare array elements
@@ -47,27 +45,6 @@ void bubbleSort(int array[], int size) {
   }
 }
 
-void	ft_indexing(t_stack **stack)
-{
-	t_stack	*tmp;
-	int		i;
-	int		median;
-
-	tmp = *stack;
-	median = ft_stack_size(stack) / 2;
-	i = 0;
-	while(tmp != NULL)
-	{
-		tmp->index = i;
-		if(i <= median)
-			tmp->above_median = 1;
-		else
-			tmp->above_median = 0;
-		i++;
-		tmp = tmp->next;
-	}
-}
-
 int	ft_sum(t_stack **stack)
 {
 	int		sum;
@@ -85,13 +62,13 @@ int	ft_sum(t_stack **stack)
 
 int	ft_cp_stack(t_stack **stack)
 {
-	int	*arr;
-	int	mid;
-	int	size;
+	int		*arr;
+	int		mid;
+	int		size;
 	t_stack	*tmp;
 
 	arr = (int *) malloc(sizeof(int) * ft_stack_size(stack));
-	if(arr == NULL)
+	if (arr == NULL)
 		ft_error("Arr not allocated");
 	size = 0;
 	tmp = *stack;
@@ -102,20 +79,26 @@ int	ft_cp_stack(t_stack **stack)
 		size++;
 	}
 	bubbleSort(arr,size);
-	if(size % 2 == 0)
+	int temp = 0;
+	while(temp < size)
+	{
+		printf("arr=%d\n",arr[temp++]);
+	}
+	if (size % 2 == 0)
 		mid = (arr[size / 2] + arr[(size / 2) -1]) / 2;
 	else
 		mid = arr[size / 2];
 	free(arr);
-	return	(mid);
+	return (mid);
 }
+
 t_stack	*ft_find_end(t_stack **stack)
 {
 	t_stack	*tmp;
 
 	tmp = *stack;
 
-	while(tmp->next != NULL)
+	while (tmp->next != NULL)
 		tmp = tmp->next;
 	return (tmp);
 }

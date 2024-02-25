@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:22:27 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/21 22:39:05 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/25 12:50:27 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_difference_check(t_stack **stack_a)
 {
 	t_stack	*root;
 	t_stack	*iter;
-	long		tmp;
+	long	tmp;
 
 	root = *stack_a;
 	while(root != NULL)
