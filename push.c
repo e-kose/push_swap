@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:52:51 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/25 14:20:25 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/27 13:32:50 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,18 @@ static void	ft_push(t_stack **stack_d, t_stack **stack_s)
 
 	if (*stack_s == NULL)
 		return ;
+	head = *stack_s;
+	*stack_s = (*stack_s)->next;
 	if (*stack_d == NULL)
 	{
-		head = (*stack_s)->next;
-		(*stack_s)->next = NULL;
-		*stack_d = *stack_s;
-		*stack_s = head;
+		*stack_d = head;
+		head->next = NULL;
 	}
 	else
 	{
-		head = (*stack_s)->next;
-		(*stack_s)->next = *stack_d;
-		*stack_d = *stack_s;
-		*stack_s = head;
+		head->next = *stack_d;
+		head->next->prev = head;
+		*stack_d = head;
 	}
 }
 

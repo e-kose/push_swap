@@ -6,39 +6,46 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:22:27 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/25 12:50:27 by ekose            ###   ########.fr       */
+/*   Updated: 2024/03/02 15:21:26 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_limit_check(char **argv)
+void	ft_limit_check(t_data *arg)
 {
 	long	tmp;
+	char	**argv;
+
+	argv = arg->argv;
 	while (*argv)
 	{
 		tmp = ft_atoi(*argv);
 		if(tmp > 2147483647 || tmp < -2147483648)
-			ft_error("Error\nInvalid value range\n");
+			ft_free_argv(arg,"Error\n");
 		argv++;
 	}
-
 }
+
 void	ft_arg_check(t_data *arg, char **argv)
 {
-
-	if(ft_strchr(argv[1],' ') != 0)
-			arg->argv = ft_split(argv[1],' ');
+	if(ft_strchr(argv[0],' ') != 0)
+			arg->argv = ft_split(argv[0],' ');
 	else
-		exit(0);
+	{
+		free(arg);
+		exit (0);
+	}
 }
 
-void	ft_value_check(char **argv)
+void	ft_value_check(t_data *arg)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	**argv;
 
 	i = -1;
+	argv = arg->argv;
 	while(argv[++i])
 	{
 		j = -1;
@@ -50,13 +57,14 @@ void	ft_value_check(char **argv)
 					&& (argv[i][j] == '-' || argv[i][j] == '+'))
 					continue;
 				else
-					ft_error("Error\nArg not integer\n");
+					ft_free_argv(arg, "Error\n");
 			}
 		}
 	}
+	ft_limit_check(arg);
 }
 
-void	ft_difference_check(t_stack **stack_a)
+void	ft_difference_check(t_stack **stack_a, t_data *arg)
 {
 	t_stack	*root;
 	t_stack	*iter;
@@ -70,7 +78,7 @@ void	ft_difference_check(t_stack **stack_a)
 		while(iter != NULL)
 		{
 			if(tmp == iter->data)
-				ft_free(stack_a, "Error\nSame values\n");
+				ft_full_free(stack_a, arg,"Error\n");
 			iter = iter->next;
 		}
 		root = root->next;

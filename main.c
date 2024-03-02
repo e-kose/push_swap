@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:30:54 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/25 17:30:57 by ekose            ###   ########.fr       */
+/*   Updated: 2024/03/02 15:17:21 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,32 @@
 
 void	ft_error(char *s)
 {
-	write(2, s, ft_strlen(s));
+	write(1, s, ft_strlen(s));
 	exit(1);
 }
 
 int	main(int ac, char **argv)
 {
-	t_data	arg;
+	t_data	*arg;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	arg.argv = argv + 1;
-	if (ac == 1)
-		return (0);
-	else if (ac == 2)
-		ft_arg_check(&arg, argv);
-	argv = arg.argv;
-	ft_value_check(argv);
-	ft_stack_filling(&stack_a, argv);
-	if (ft_check_stack_sorted(&stack_a))
+	argv++;
+	if (ac > 1)
 	{
-		if (ft_stack_size(&stack_a) == 2)
-			ft_swap_a(&stack_a);
-		else if (ft_stack_size(&stack_a) == 3)
-			ft_three_node_sort_a(&stack_a);
-		else
+		arg = malloc(sizeof(t_data));
+		arg->argv = argv;
+		arg->ac = ac;
+		if (ac == 2)
+			ft_arg_check(arg, argv);
+		ft_value_check(arg);
+		ft_stack_filling(&stack_a, arg);
+		ft_find_index(&stack_a);
+		if (ft_check_stack_sorted(&stack_a))
 			ft_sort(&stack_a, &stack_b);
+		ft_free(&stack_a, arg);
 	}
-	while (stack_a != NULL)
-	{
-		printf("%d\n",stack_a->data);
-		stack_a = stack_a->next;
-	}
-	// return (0);
+	return (0);
 }

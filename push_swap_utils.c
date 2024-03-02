@@ -6,49 +6,47 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:45:05 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/25 12:46:29 by ekose            ###   ########.fr       */
+/*   Updated: 2024/03/02 14:57:39 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_stack_filling(t_stack **stack_a, char **argv)
+void	ft_stack_filling(t_stack **stack_a, t_data *arg)
 {
 	t_stack	*top;
 	int		i;
 
-	ft_limit_check(argv);
 	top = NULL;
-
 	i = -1;
-	while (argv[++i])
+	while (arg->argv[++i])
 	{
 		if (top == NULL)
 		{
 			*stack_a = malloc(sizeof(t_stack));
-			(*stack_a)->data = (int)ft_atoi(argv[i]);
+			(*stack_a)->data = (int)ft_atoi(arg->argv[i]);
 			(*stack_a)->next = NULL;
+			(*stack_a)->prev = NULL;
 			top = *stack_a;
 		}
 		else
 		{
-			(*stack_a)->next = malloc(sizeof(t_stack));
-			(*stack_a)= (*stack_a)->next;
-			(*stack_a)->data = (int)ft_atoi(argv[i]);
-			(*stack_a)->next = NULL;
+			top->next = malloc(sizeof(t_stack));
+			top->next->data = (int)ft_atoi(arg->argv[i]);
+			top->next->prev = top;
+			top = top->next;
+			top->next = NULL;
 		}
 	}
-		*stack_a = top;
-	ft_difference_check(stack_a);
+	ft_difference_check(stack_a, arg);
 }
 
-t_stack	*ft_last_node(t_stack **stack)
+t_stack	*ft_find_end(t_stack **stack)
 {
 	t_stack	*tmp;
 
 	tmp = *stack;
-	if (tmp == NULL)
-		return (0);
+
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	return (tmp);
@@ -98,13 +96,13 @@ t_stack	*ft_min_node(t_stack **stack)
 	t_stack	*tmp;
 	t_stack	*min;
 
-	min = *stack;
-	if (min == NULL)
+	tmp = *stack;
+	if (tmp == NULL)
 		return (0);
-	tmp = min->next;
+	min = NULL;
 	while (tmp != NULL)
 	{
-		if (tmp->data < min->data)
+		if ((min == NULL || tmp->data < min->data) && tmp->index == -1)
 		{
 			min = tmp;
 			tmp = min->next;

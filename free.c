@@ -6,25 +6,75 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:45:53 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/19 16:42:45 by ekose            ###   ########.fr       */
+/*   Updated: 2024/03/02 15:11:36 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+void	ft_error_free(t_stack **stack_a, char *s)
+{
+	t_stack	*iter;
 
-void	ft_free_argv(char **argv)
+	while(*stack_a != NULL)
+	{
+		iter = (*stack_a)->next;
+		free(*stack_a);
+		*stack_a = iter;
+	}
+	ft_error(s);
+}
+void	ft_free_argv(t_data *arg, char *s)
 {
 	int	i;
 
 	i = 0;
-	while(argv[i])
-		free(argv[i++]);
-	free(argv);
+	if(arg->ac == 2)
+	{
+		while(arg->argv[i])
+		{
+			free(arg->argv[i]);
+			i++;
+		}
+		free(arg->argv);
+	}
+	free(arg);
+	ft_error(s);
 }
-void	ft_free(t_stack **stack_a, char *s)
+void	ft_free(t_stack **stack_a, t_data *arg)
 {
 	t_stack	*iter;
+	int		i;
 
+	i = 0;
+	if(arg->ac == 2)
+	{
+		while(arg->argv[i])
+			free(arg->argv[i++]);
+		free(arg->argv);
+	}
+	free(arg);
+	while((*stack_a)!= NULL)
+	{
+		iter = (*stack_a)->next;
+		free(*stack_a);
+		*stack_a = iter;
+	}
+}
+
+void	ft_full_free(t_stack **stack_a, t_data *arg, char *s)
+{
+	int	i;
+	t_stack	*iter;
+
+	iter = *stack_a;
+	i = 0;
+	if(arg->ac == 2)
+	{
+		while(arg->argv[i])
+			free(arg->argv[i++]);
+		free(arg->argv);
+	}
+	free(arg);
 	while((*stack_a)!= NULL)
 	{
 		iter = (*stack_a)->next;
@@ -33,4 +83,3 @@ void	ft_free(t_stack **stack_a, char *s)
 	}
 	ft_error(s);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:37:56 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/25 13:10:58 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/27 17:19:19 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,23 @@ void	ft_three_node_sort_b(t_stack **stack_b)
 		ft_reverse_rotate_b(stack_b);
 	if ((*stack_b)->data < (*stack_b)->next->data)
 		ft_swap_b(stack_b);
+}
+void	ft_five_node_sort(t_stack **stack_a, t_stack **stack_b)
+{
+	int	len;
+
+	len = ft_stack_size(stack_a);
+	while(len--)
+	{
+		if ((*stack_a)->index == 0 ||(*stack_a)->index == 1)
+			ft_push_b(stack_a, stack_b);
+		else
+			ft_rotate_a(stack_a);
+	}
+	ft_three_node_sort_a(stack_a);
+	ft_push_a(stack_b, stack_a);
+	ft_push_a(stack_b, stack_a);
+	if((*stack_a)->data > (*stack_a)->next->data)
+		ft_swap_a(stack_a);
+
 }

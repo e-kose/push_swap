@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 15:05:24 by ekose             #+#    #+#             */
-/*   Updated: 2024/02/25 14:22:01 by ekose            ###   ########.fr       */
+/*   Updated: 2024/02/26 18:11:42 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static void	ft_rotate(t_stack **stack)
 	t_stack	*top;
 	t_stack *tmp;
 
-	tmp = *(stack);
+	tmp = ft_find_end(stack);
 	top = (*stack)->next;
-	while(tmp->next != NULL)
-		tmp = tmp->next;
 	tmp->next = *stack;
+	(*stack)->prev = tmp;
 	(*stack)->next = NULL;
+	top->prev = NULL;
 	*stack= top;
 }
 
