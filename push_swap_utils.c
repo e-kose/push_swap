@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 17:45:05 by ekose             #+#    #+#             */
-/*   Updated: 2024/03/02 14:57:39 by ekose            ###   ########.fr       */
+/*   Updated: 2024/03/06 12:34:03 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_stack	*ft_find_end(t_stack **stack)
 	t_stack	*tmp;
 
 	tmp = *stack;
-
 	while (tmp->next != NULL)
 		tmp = tmp->next;
 	return (tmp);

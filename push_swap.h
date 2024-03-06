@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:31:07 by ekose             #+#    #+#             */
-/*   Updated: 2024/03/02 15:10:10 by ekose            ###   ########.fr       */
+/*   Updated: 2024/03/06 12:24:33 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_data
 	char	**argv;
 	int		check;
 
-} t_data;
+}	t_data;
 
 typedef struct s_stack
 {
@@ -38,7 +38,7 @@ void		ft_push_b(t_stack **stack_a, t_stack **stack_b);
 
 void		ft_swap_a(t_stack **stack_a);
 void		ft_swap_b(t_stack **stack_b);
-void		ft_swap_ss(t_stack **stack_a,t_stack **stack_b);
+void		ft_swap_ss(t_stack **stack_a, t_stack **stack_b);
 
 void		ft_rotate_a(t_stack **stack_a);
 void		ft_rotate_b(t_stack **stack_b);
@@ -49,8 +49,8 @@ void		ft_reverse_rotate_b(t_stack **stack_b);
 void		ft_reverse_rotate_rr(t_stack **stack_a, t_stack **stack_b);
 
 int			ft_stack_size(t_stack **stack);
-t_stack	*	ft_max_node(t_stack **stack);
-t_stack	*	ft_min_node(t_stack **stack);
+t_stack		*ft_max_node(t_stack **stack);
+t_stack		*ft_min_node(t_stack **stack);
 
 int			ft_check_stack_sorted(t_stack **stack);
 void		ft_three_node_sort_a(t_stack **stack_a);

@@ -6,7 +6,7 @@
 /*   By: ekose <ekose@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 15:56:08 by ekose             #+#    #+#             */
-/*   Updated: 2024/03/02 15:56:01 by ekose            ###   ########.fr       */
+/*   Updated: 2024/03/06 12:23:03 by ekose            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ static int	ft_max_bits(t_stack **stack)
 
 	max_index = ft_max_node(stack)->index;
 	max_bit = 0;
-	while(max_index >> max_bit)
+	while (max_index >> max_bit)
 		max_bit++;
-	return(max_bit);
+	return (max_bit);
 }
 
-void ft_radix_sort(t_stack **stack_a, t_stack **stack_b)
+void	ft_radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*top;
-	int	i;
-	int	j;
-	int	size;
-	int	max_bit;
+	int		i;
+	int		j;
+	int		size;
+	int		max_bit;
 
 	max_bit = ft_max_bits(stack_a);
 	size = ft_stack_size(stack_a);
@@ -41,7 +41,7 @@ void ft_radix_sort(t_stack **stack_a, t_stack **stack_b)
 		while (++j < size)
 		{
 			top = *stack_a;
-			if((top->index >> i) & 1)
+			if ((top->index >> i) & 1)
 				ft_rotate_a(stack_a);
 			else
 				ft_push_b(stack_a, stack_b);
@@ -50,6 +50,7 @@ void ft_radix_sort(t_stack **stack_a, t_stack **stack_b)
 			ft_push_a(stack_b, stack_a);
 	}
 }
+
 void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_stack_size(stack_a) == 2)
